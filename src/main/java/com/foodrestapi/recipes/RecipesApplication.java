@@ -1,4 +1,4 @@
-package com.foodrestapi.recipe;
+package com.foodrestapi.recipes;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

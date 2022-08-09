@@ -1,4 +1,4 @@
-package com.foodrestapi.recipe;
+package com.foodrestapi.recipes;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

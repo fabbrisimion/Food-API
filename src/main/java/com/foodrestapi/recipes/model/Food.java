@@ -13,13 +13,13 @@ import java.util.List;
 @Table(name = "food")
 public class Food {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "food_name")
+    @Column(name = "food_name", nullable = false)
     private String foodName;
 
-    @Column(name = "food_cat")
+    @Column(name = "food_cat", nullable = false)
     private String foodCategory;
 
     @Column(name = "calories", nullable = false)

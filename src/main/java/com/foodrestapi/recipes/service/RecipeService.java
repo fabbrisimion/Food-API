@@ -26,8 +26,24 @@ public class RecipeService {
         return recipeRepository.findById(id);
     }
 
-    public void create(Recipe recipe){
-        recipeRepository.saveAndFlush(recipe);
+    public Recipe create(Recipe recipe){
+        return recipeRepository.saveAndFlush(recipe);
+    }
+
+    public Recipe update(Recipe newRecipe, Long id) {
+        return recipeRepository.findById(id)
+                .map(recipe -> {
+                    recipe.setRecipe_name(newRecipe.getRecipe_name());
+                    recipe.setRecipe_description(newRecipe.getRecipe_description());
+                    recipe.setRecipe_time(newRecipe.getRecipe_time());
+                    recipe.setDifficulty(newRecipe.getDifficulty());
+                    recipe.setIngredients(newRecipe.getIngredients());
+                    return recipeRepository.save(recipe);
+                })
+                .orElseGet(() -> {
+                    newRecipe.setId(id);
+                    return recipeRepository.save(newRecipe);
+                });
     }
 
     public void delete(Long id){

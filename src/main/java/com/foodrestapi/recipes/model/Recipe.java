@@ -14,29 +14,29 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name = "recipes")
+@Table(name = "recipe")
 public class Recipe {
     @Id
-    @GeneratedValue
-    @Column(name = "recipe_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "title", nullable = false, length = 100)
-    private String title;
+    @Column(name = "recipe_name")
+    private String recipe_name;
 
-    @Column(name = "description", nullable = false, length = 1000)
-    private String description;
+    @Column(name = "recipe_description")
+    private String recipe_description;
 
-    @Column(name = "prep_time")
-    private String prepTime;
+    @Column(name = "recipe_time")
+    private String recipe_time;
 
-    @Column(name = "difficulty", nullable = false)
+    @Column(name = "difficulty")
     private Integer difficulty;
 
     @ManyToMany
     @JoinTable(
             name = "ingredients",
-            joinColumns = @JoinColumn(name = "rec_id"),
-            inverseJoinColumns = @JoinColumn(name = "foodpiece_id"))
+            joinColumns = @JoinColumn(
+                    name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "food_id"))
     private List<Food> ingredients;
 }

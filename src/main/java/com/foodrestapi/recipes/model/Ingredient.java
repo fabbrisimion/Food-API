@@ -10,19 +10,20 @@ import javax.persistence.*;
 @Entity
 @Table(name = "ingredients")
 public class Ingredient {
-    @Id
-    @GeneratedValue
-    @Column(name = "ingredient_id", nullable = false)
-    private Integer id;
+
+    @EmbeddedId
+    IngredientId id;
 
     @ManyToOne
-    @JoinColumn(name = "foodpiece_id")
-    private Food foodpiece;
+    @MapsId("foodId")
+    @JoinColumn(name = "food_id")
+    private Food food_id;
 
     @ManyToOne
-    @JoinColumn(name = "rec_id")
-    private Recipe rec;
+    @MapsId("recipeId")
+    @JoinColumn(name = "recipe_id")
+    private Recipe recipe;
 
-    @Column(name = "amount", nullable = false, length = 30)
+    @Column(name = "amount")
     private String amount;
 }

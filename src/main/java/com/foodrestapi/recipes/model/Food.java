@@ -10,31 +10,27 @@ import java.util.List;
 
 @Setter @Getter @NoArgsConstructor
 @Entity
-@Table(name = "foods")
+@Table(name = "food")
 public class Food {
     @Id
-    @Column(name = "food_id", nullable = false)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "food_cat")
-    //private FoodCategory foodCat;
-
-    @Column(name = "food_name", nullable = false, length = 30)
+    @Column(name = "food_name")
     private String foodName;
 
-    @Column(name = "kcal", nullable = false)
-    private Integer kcal;
+    @Column(name = "food_cat")
+    private String foodCategory;
 
-    @Column(name = "carbohydrates", nullable = false)
+    @Column(name = "calories", nullable = false)
+    private Integer calories;
+
+    @Column(name = "carbs", nullable = false)
     private Integer carbohydrates;
 
-    @Column(name = "protein", nullable = false)
-    private Integer protein;
+    @Column(name = "prots", nullable = false)
+    private Integer proteins;
 
-    @Column(name = "lipids", nullable = false)
+    @Column(name = "fats", nullable = false)
     private Integer lipids;
-
-    @ManyToMany(mappedBy = "ingredients")
-    List<Recipe> recipes;
 }

@@ -5,6 +5,7 @@ import com.foodrestapi.recipes.model.Food;
 import com.foodrestapi.recipes.service.FoodService;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,7 +20,8 @@ public class FoodController {
 
     @GetMapping
     public List<Food> getFood() {
-        return foodService.getFood();
+        List<Food> foodList = foodService.getFood();
+        return foodList;
     }
 
     @GetMapping
@@ -28,13 +30,21 @@ public class FoodController {
         return foodService.getFoodById(id);
     }
 
-    @PostMapping
+    @PostMapping(
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public Food createFood(@RequestBody Food newFood){
         return foodService.create(newFood);
     }
 
     @PutMapping(value = "/{id}")
-    public Food update(@RequestBody Food newFood, @PathVariable Long id){
-        return foodService.update(newFood,id);
+    public Food updateFood(@PathVariable Long id, @RequestBody Food newFood){
+        return foodService.update(newFood, id);
     }
+
+    @DeleteMapping(value = "/{id}")
+    public void deleteFood(@PathVariable Long id){
+        foodService.delete(id);
+    }
+
 }

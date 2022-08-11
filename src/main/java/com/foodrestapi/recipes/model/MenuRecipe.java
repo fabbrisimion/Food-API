@@ -1,5 +1,6 @@
 package com.foodrestapi.recipes.model;
 
+import com.foodrestapi.recipes.model.keys.MenuRecipeId;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package com.foodrestapi.recipes.model;
+package com.foodrestapi.recipes.model.keys;
 
 import org.hibernate.Hibernate;
 

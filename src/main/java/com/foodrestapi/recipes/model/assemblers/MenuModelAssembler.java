@@ -1,7 +1,7 @@
 package com.foodrestapi.recipes.model.assemblers;
 
 import com.foodrestapi.recipes.controller.MenuController;
-import com.foodrestapi.recipes.model.Food;
+import com.foodrestapi.recipes.controller.RecipeController;
 import com.foodrestapi.recipes.model.Menu;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
@@ -16,7 +16,7 @@ public class MenuModelAssembler implements RepresentationModelAssembler<Menu, En
     @Override
     public EntityModel<Menu> toModel(Menu menu){
         return EntityModel.of(menu,
-                linkTo(methodOn(MenuController.class).getMenuById(menu.getId())).withSelfRel(),
+                linkTo(methodOn(MenuController.class).getById(menu.getId())).withSelfRel(),
                 linkTo(methodOn(MenuController.class).getMenu()).withRel("menu"));
     }
 }

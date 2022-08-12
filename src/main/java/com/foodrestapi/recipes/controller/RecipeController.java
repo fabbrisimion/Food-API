@@ -23,7 +23,7 @@ public class RecipeController {
     }
 
     @GetMapping(value = "/{id}")
-    public Optional<Recipe> getRecipeById(@PathVariable Long id) {
+    public Recipe getRecipeById(@PathVariable Long id) {
         return recipeService.getRecipeById(id);
     }
 

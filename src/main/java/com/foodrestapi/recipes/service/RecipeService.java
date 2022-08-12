@@ -1,5 +1,6 @@
 package com.foodrestapi.recipes.service;
 
+import com.foodrestapi.recipes.exceptions.RecipeNotFoundException;
 import com.foodrestapi.recipes.model.Recipe;
 import com.foodrestapi.recipes.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,8 @@ public class RecipeService {
         return recipeRepository.findAll();
     }
 
-    public Optional<Recipe> getRecipeById(Long id) {
-        return recipeRepository.findById(id);
+    public Recipe getRecipeById(Long id) {
+        return recipeRepository.findById(id).orElseThrow(() -> new RecipeNotFoundException(id));
     }
 
     public Recipe create(Recipe recipe){

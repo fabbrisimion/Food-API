@@ -20,13 +20,12 @@ public class FoodController {
 
     @GetMapping
     public List<Food> getFood() {
-        List<Food> foodList = foodService.getFood();
-        return foodList;
+        return foodService.getFood();
     }
 
     @GetMapping
     @RequestMapping(value = "/{id}")
-    public Optional<Food> getById(@PathVariable Long id){
+    public Food getById(@PathVariable Long id){
         return foodService.getFoodById(id);
     }
 

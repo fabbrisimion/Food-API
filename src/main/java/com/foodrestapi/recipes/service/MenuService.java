@@ -1,5 +1,6 @@
 package com.foodrestapi.recipes.service;
 
+import com.foodrestapi.recipes.exceptions.MenuNotFoundException;
 import com.foodrestapi.recipes.model.Menu;
 import com.foodrestapi.recipes.model.Recipe;
 import com.foodrestapi.recipes.repository.MenuRepository;
@@ -19,8 +20,8 @@ public class MenuService {
         return menuRepository.findAll();
     }
 
-    public Optional<Menu> getMenuById(Long id) {
-        return menuRepository.findById(id);
+    public Menu getMenuById(Long id) {
+        return menuRepository.findById(id).orElseThrow(() -> new MenuNotFoundException(id));
     }
 
     public Menu create(Menu menu){

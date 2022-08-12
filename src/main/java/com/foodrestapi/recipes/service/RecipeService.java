@@ -11,12 +11,8 @@ import java.util.Optional;
 @Service
 public class RecipeService {
 
-    private final RecipeRepository recipeRepository;
-
     @Autowired
-    public RecipeService(RecipeRepository recipeRepository){
-        this.recipeRepository = recipeRepository;
-    }
+    private RecipeRepository recipeRepository;
 
     public List<Recipe> getRecipes(){
         return recipeRepository.findAll();
